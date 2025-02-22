@@ -19,6 +19,10 @@ results_collection = db.model_prediction
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+# Ensure the upload directory exists
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 # Load pre-trained models
 first_model = tf.keras.models.load_model('riceleaf_identification.keras')  # Binary classification model
 second_model = tf.keras.models.load_model('TAN_model1.h5')  # Multi-class classification model
@@ -50,9 +54,17 @@ def upload_image():
         return jsonify({"error": "No selected file"}), 400
 
     if file and allowed_file(file.filename):
+        # Ensure the uploads directory exists
+        if not os.path.exists(app.config['UPLOAD_FOLDER']):
+            os.makedirs(app.config['UPLOAD_FOLDER'])
+
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
+
+        try:
+            file.save(file_path)  # Save file to uploads folder
+        except Exception as e:
+            return jsonify({"error": f"Failed to save file: {str(e)}"}), 500
 
         try:
             # Preprocess the image
