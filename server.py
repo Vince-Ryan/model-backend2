@@ -74,7 +74,7 @@ def upload_image():
             first_predictions = first_model.predict(img_array)
             first_predicted_class = float(first_predictions[0][0])  # Unchanged logic from your code
 
-            if first_predicted_class < 0.5:  # Only proceed if it is a rice leaf
+            if first_predicted_class > 0.5:  # Only proceed if it is a rice leaf
                 # Second model prediction (Multi-class classification)
                 second_predictions = second_model.predict(img_array)
                 second_predicted_class = int(np.argmax(second_predictions, axis=-1)[0])  # Class index
