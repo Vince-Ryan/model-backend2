@@ -1,4 +1,3 @@
 __pycache__/
-*.keras
 uploads/
 .env
