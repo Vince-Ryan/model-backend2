@@ -30,7 +30,7 @@ second_model = tf.keras.models.load_model('ColorClassification.h5')  # Multi-cla
 # Allowed file types
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-# Helper function to check if file is allowed
+# Helper function to check if file is allowed 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
