@@ -60,7 +60,7 @@ def upload_image():
 
             del first_model  # Free memory
 
-            if first_predicted_class < 0.5:
+            if first_predicted_class > 0.5:
                 second_model = tf.keras.models.load_model(second_model_path)
                 second_predictions = second_model.predict(img_array)
                 second_predicted_class = int(np.argmax(second_predictions, axis=-1)[0])
