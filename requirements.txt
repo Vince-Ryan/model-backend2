@@ -1,7 +1,8 @@
-Flask
-tensorflow
-pillow
+Flask==3.0.0
+tensorflow==2.18.0
 numpy
+pillow
 pymongo
 werkzeug
 gunicorn
+
