@@ -22,7 +22,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 # Lazy-load models only when needed
 first_model_path = 'riceleaf_identification.keras'
-second_model_path = 'TAN_model1.h5'
+second_model_path = 'ColorClassification.h5'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
