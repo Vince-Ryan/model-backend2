@@ -25,7 +25,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 # Load pre-trained models
 first_model = tf.keras.models.load_model('riceleaf_identification.keras')  # Binary classification model
-second_model = tf.keras.models.load_model('TAN_model1.h5')  # Multi-class classification model
+second_model = tf.keras.models.load_model('ColorClassification.h5')  # Multi-class classification model
 
 # Allowed file types
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
